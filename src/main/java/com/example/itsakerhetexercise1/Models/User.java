@@ -1,10 +1,11 @@
-package com.example.itsakerhetexercise1;
+package com.example.itsakerhetexercise1.Models;
 
 import jakarta.persistence.*;
 import lombok.Data;
 
 
 @Entity
+@Table(name="app_user")
 @Data
 public class User {
 
