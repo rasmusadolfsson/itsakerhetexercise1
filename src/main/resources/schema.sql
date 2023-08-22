@@ -5,7 +5,3 @@ create table user (
     username VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL
 );
-
-create table user_seq (
-    next_val bigint
-);

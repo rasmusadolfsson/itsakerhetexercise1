@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -20,16 +21,16 @@ public class UserController {
     }
 
     @PostMapping("/addUser")
-    public String addNewUser(@RequestBody User user){
+    public String addNewUser(@RequestParam String username, @RequestParam String password){
         //List<User> listOfUsers = userRepo.findByUsername(user.getUsername());
-        if(user.getUsername() == null){
+        if(username == null){
             return "invalid name!";
         }
 
-        if(user.getPassword() == null){
+        if(password == null){
             return "invalid password!";
         }
-
+        User user = new User(username, password);
         userRepo.save(user);
         return "addUser";
     }
