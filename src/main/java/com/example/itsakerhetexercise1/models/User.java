@@ -1,4 +1,4 @@
-package com.example.itsakerhetexercise1;
+package com.example.itsakerhetexercise1.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
