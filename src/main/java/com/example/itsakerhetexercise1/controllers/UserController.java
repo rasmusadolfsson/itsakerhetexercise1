@@ -21,8 +21,8 @@ public class UserController {
 
     @PostMapping("/addUser")
     public String addNewUser(@RequestBody User user){
-        List<User> listOfUsers = userRepo.findByUsername(user.getUsername());
-        if(user.getUsername() == null || listOfUsers.size() > 0){
+        //List<User> listOfUsers = userRepo.findByUsername(user.getUsername());
+        if(user.getUsername() == null){
             return "invalid name!";
         }
 
@@ -31,7 +31,7 @@ public class UserController {
         }
 
         userRepo.save(user);
-        return "added user";
+        return "addUser";
     }
 
     @GetMapping("/addUser")
