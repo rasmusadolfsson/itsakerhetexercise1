@@ -30,7 +30,7 @@ public class LoginController {
         }
 
         // Check if the username is "password" followed by a number from 1 to 5
-        return username.matches("password[1-5]") && password.equals("user" + username.charAt(8));
+        return username.matches("user[1-5]") && password.equals("password" + username.charAt(4));
     }
 }
 
