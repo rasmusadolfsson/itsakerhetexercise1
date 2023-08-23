@@ -14,6 +14,11 @@ import java.util.Set;
 @Data
 public class User implements UserDetails {
 
+    public User(String username, String password){
+        this.username = username;
+        this.password = password;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="user_id")
@@ -104,5 +109,9 @@ public class User implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public User() {
+
     }
 }

@@ -1,5 +1,6 @@
 package com.example.itsakerhetexercise1.controllers;
 
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +8,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class LoginController {
+
+    private final JdbcTemplate jdbcTemplate;
+
+    public LoginController(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     @RequestMapping("/login")
     public String loginPage() {
@@ -29,8 +36,10 @@ public class LoginController {
             return true;
         }
 
-        // Check if the username is "password" followed by a number from 1 to 5
-        return username.matches("password[1-5]") && password.equals("user" + username.charAt(8));
+        // Check if the username and password combination exists in the database
+        String sql = "SELECT * FROM user WHERE username = '" + username + "' AND password = '" + password + "'";
+        return jdbcTemplate.query(sql, (rs, rowNum) -> rs.getString("username")).size() == 1;
+
     }
 }
 
