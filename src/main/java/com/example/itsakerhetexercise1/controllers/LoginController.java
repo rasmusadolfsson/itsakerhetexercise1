@@ -1,5 +1,6 @@
 package com.example.itsakerhetexercise1.controllers;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,7 +25,7 @@ public class LoginController {
     public String login(@RequestParam String username, @RequestParam String password) {
         // Check if the username and password combination is valid
         if (isValidLogin(username, password)) {
-            return "redirect:/loggedin";
+            return "redirect:/loggedIn?username=" + username;
         } else {
             return "redirect:/login?error";
         }
