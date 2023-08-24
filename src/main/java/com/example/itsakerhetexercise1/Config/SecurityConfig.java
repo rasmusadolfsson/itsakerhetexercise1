@@ -45,7 +45,6 @@ public class SecurityConfig {
                     auth.anyRequest().authenticated();
                 })
                 .httpBasic().and()
-                .userDetailsService(userDetailService)
                 .build();
     }
 }

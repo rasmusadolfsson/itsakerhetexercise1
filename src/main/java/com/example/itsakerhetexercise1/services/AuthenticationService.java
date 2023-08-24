@@ -15,10 +15,11 @@ import java.util.Set;
 @Service
 @Transactional
 public class AuthenticationService {
-    private final UserRepo userRepo;
-
-    private final RoleRepo roleRepo;
-
+    @Autowired
+    private UserRepo userRepo;
+    @Autowired
+    private RoleRepo roleRepo;
+    @Autowired
     private final PasswordEncoder passwordEncoder;
 
     public AuthenticationService(UserRepo userRepo, RoleRepo roleRepo, PasswordEncoder passwordEncoder) {
@@ -33,7 +34,11 @@ public class AuthenticationService {
         Role userRole = roleRepo.findByAuthority("USER").get();
 
         Set<Role> roles = new HashSet<>();
+
         roles.add(userRole);
+
+        System.out.println(userRole.getAuthority());
+
         return userRepo.save(new User(username,encodedPassword,roles));
     }
 }

@@ -15,7 +15,7 @@ public class Role implements GrantedAuthority {
 
     @Override
     public String getAuthority() {
-        return null;
+        return this.authority;
     }
 
     public Role() {
@@ -42,4 +42,5 @@ public class Role implements GrantedAuthority {
     public void setAuthority(String authority) {
         this.authority = authority;
     }
+
 }

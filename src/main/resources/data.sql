@@ -1,5 +1,15 @@
-
-INSERT INTO user (username, password) VALUES ('user1', 'password1');
-INSERT INTO user (username, password) VALUES ('user2', 'password2');
-INSERT INTO user (username, password) VALUES ('user3', 'password3');
-INSERT INTO user (username, password) VALUES ('user4', 'password4');
+--
+-- INSERT INTO user (username, password) VALUES ('admin', 'admin');
+-- INSERT INTO user (username, password) VALUES ('user1', 'password1');
+-- INSERT INTO user (username, password) VALUES ('user2', 'password2');
+-- INSERT INTO user (username, password) VALUES ('user3', 'password3');
+-- INSERT INTO user (username, password) VALUES ('user4', 'password4');
+--
+-- INSERT INTO role (authority) VALUES ('USER');
+-- INSERT INTO role (authority) VALUES ('ADMIN');
+--
+-- INSERT INTO user_role (user_id, role_id) VALUES (1, 1);
+-- INSERT INTO user_role (user_id, role_id) VALUES (2, 2);
+-- INSERT INTO user_role (user_id, role_id) VALUES (3, 2);
+-- INSERT INTO user_role (user_id, role_id) VALUES (4, 2);
+-- INSERT INTO user_role (user_id, role_id) VALUES (5, 2);
