@@ -38,13 +38,25 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
                 .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(auth ->{
+                .authorizeHttpRequests(auth -> {
                     auth.requestMatchers("/auth/**").permitAll();
                     auth.requestMatchers("/admin/**").hasAuthority("ADMIN");
-                    auth.requestMatchers("/user/**").hasAnyAuthority("USER","ADMIN");
+                    auth.requestMatchers("/user/**").hasAnyAuthority("USER", "ADMIN");
                     auth.anyRequest().authenticated();
                 })
-                .httpBasic().and()
+                .formLogin()
+                .loginPage("/login") // Custom login page URL
+                .loginProcessingUrl("/login") // URL to process login
+                .defaultSuccessUrl("/loggedin") // Redirect after successful login
+                .failureUrl("/login?error") // Redirect after failed login
+                .permitAll()
+                .and()
+                .logout()
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/login?logout")
+                    .invalidateHttpSession(true)
+                    .deleteCookies("JSESSIONID")
+                .and()
                 .build();
 
     }

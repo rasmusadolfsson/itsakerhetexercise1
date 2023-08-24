@@ -6,16 +6,17 @@
 </head>
 <body>
 <h1>You are Logged In</h1>
-
-<form action="/admin" method="get">
-  <input type="submit" value="Go to Admin Page">
-</form>
+<div th:if="${isAdmin}">
+  <form action="/admin" method="get">
+    <input type="submit" value="Go to Admin Page">
+  </form>
+</div>
 
 <form action="/addUser" method="get">
   <input type="submit" value="Add New User">
 </form>
 
-<form action="/logout" method="post">
+<form action="/logout" method="get">
   <input type="submit" value="Logout">
 </form>
 </body>
