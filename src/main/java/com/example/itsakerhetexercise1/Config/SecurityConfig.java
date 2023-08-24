@@ -44,7 +44,19 @@ public class SecurityConfig {
                     auth.requestMatchers("/user/**").hasAnyAuthority("USER", "ADMIN");
                     auth.anyRequest().authenticated();
                 })
-                .httpBasic().and()
+                .formLogin()
+                .loginPage("/login") // Custom login page URL
+                .loginProcessingUrl("/login") // URL to process login
+                .defaultSuccessUrl("/loggedin") // Redirect after successful login
+                .failureUrl("/login?error") // Redirect after failed login
+                .permitAll()
+                .and()
+                .logout()
+                    .logoutUrl("/logout")
+                    .logoutSuccessUrl("/login?logout")
+                    .invalidateHttpSession(true)
+                    .deleteCookies("JSESSIONID")
+                .and()
                 .build();
     }
 }
