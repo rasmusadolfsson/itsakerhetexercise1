@@ -17,6 +17,6 @@ public class AuthenticationController {
     @PostMapping("/register")
     public String registerUser(@ModelAttribute RegistrationDTO body){
         authenticationService.registerUser(body.getUsername(), body.getPassword());
-        return "register-new-user";
+        return "redirect:/register";
     }
 }
