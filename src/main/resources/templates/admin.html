@@ -3,8 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Admin Page</title>
+  <script th:inline="javascript">
+    function hidePassword() {
+      const passwordElements = document.querySelectorAll('[data-password]');
+      passwordElements.forEach(function(element) {
+        const password = element.getAttribute('data-password');
+        element.textContent = '*'.repeat(8);
+      });
+    }
+  </script>
 </head>
-<body>
+<body onload="hidePassword()">
 <h1>Admin Page</h1>
 <table>
   <tr>
@@ -13,7 +22,7 @@
   </tr>
   <tr th:each="user : ${users}">
     <td th:text="${user.username}"></td>
-    <td th:text="${user.password}"></td>
+    <td th:attr="data-password=${user.password}"></td>
   </tr>
 </table>
 </body>
